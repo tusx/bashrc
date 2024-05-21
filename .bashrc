@@ -41,5 +41,4 @@ alias sysupgrade='sudo apt update && sudo apt upgrade && flatpak update'
 #===========================
 #commands to run on start
 #===========================
-#source /etc/profile.d/bash_completion.sh
-neofetch
+fastfetch
