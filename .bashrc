@@ -1,6 +1,6 @@
 
 #===================================
-# Bash Custmizations ============
+# Bash Custmizations ===============
 #===================================
 
 function t_now {
@@ -35,10 +35,9 @@ PROMPT_COMMAND='set_prompt'
 
 PS1='\n[\[\e[33m\]\@ \[\e[31m\]\u\[\e[37m\]@\[\e[32m\]\h \[\e[36m\](${t_show}) \[\e[35m\]\W\[\e[m\] ] \n \[\e[0;32m\]$\[\e[m\] '
 
-
-alias sysupgrade='sudo apt-get update && sudo apt-get upgrade && flatpak update'
+alias sysupgrade='sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y && flatpak update -y'
 
 #===========================
-#commands to run on start
+# Commands to run on New Shell
 #===========================
 fastfetch
