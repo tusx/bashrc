@@ -1,5 +1,9 @@
 # My Custom Bashrc
 ### Uses `fastfetch` 
+Shows current time in 12 hr format\
+Then shows username@host\
+Lastly shows how long it took to run the last CMD\
+.
 ![Screen shot](sc.jpg)
 ```
 #===================================
