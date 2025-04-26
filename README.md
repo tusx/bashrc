@@ -3,12 +3,13 @@
 Shows current time in 12 hr format\
 Then shows username@host\
 Lastly shows how long it took to run the last CMD\
+Alias called `sysupgrade` updates system using apt & flatpak\
 .
 ![Screen shot](sc.jpg)
 ### .bashrc Code
 ```
 #===================================
-# Bash Custmizations ===============
+# .bashrc Custmizations ===============
 #===================================
 
 function t_now {
