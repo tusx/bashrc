@@ -5,6 +5,7 @@ Then shows username@host\
 Lastly shows how long it took to run the last CMD\
 .
 ![Screen shot](sc.jpg)
+### .bashrc Code
 ```
 #===================================
 # Bash Custmizations ===============
