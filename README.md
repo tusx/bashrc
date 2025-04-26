@@ -1,5 +1,5 @@
 # My Custom Bashrc
-### Requires `fastfetch` 
+### Uses `fastfetch` 
 ![Screen shot](sc.jpg)
 ```
 #===================================
