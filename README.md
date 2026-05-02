@@ -1,7 +1,7 @@
 # My Custom Bashrc
 ### Uses `fastfetch` 
 \
-![Screen shot](sc.jpg)
+![Screen shot](sc.png)
 ### .bashrc Code
 ```
 #===================================
