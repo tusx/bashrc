@@ -23,19 +23,6 @@ __prompt_now_ms() {
     fi
 }
 
-__prompt_preexec() {
-    case "$BASH_COMMAND" in
-        __prompt_preexec|__prompt_precmd|__prompt_now_ms)
-            return
-            ;;
-    esac
-
-    # Start only once for the whole command line
-    [[ -n $__prompt_timer_start ]] && return
-
-    __prompt_timer_start="$(__prompt_now_ms)"
-}
-
 __prompt_precmd() {
     local exit_code=$?
     local now d_ms d_s ms s m h
@@ -43,6 +30,8 @@ __prompt_precmd() {
     if [[ -n $__prompt_timer_start ]]; then
         now="$(__prompt_now_ms)"
         d_ms=$((now - __prompt_timer_start))
+        (( d_ms < 0 )) && d_ms=0
+
         d_s=$((d_ms / 1000))
         ms=$((d_ms % 1000))
         s=$((d_s % 60))
@@ -73,11 +62,16 @@ __prompt_precmd() {
     __prompt_timer_start=""
 }
 
-trap '__prompt_preexec' DEBUG
+# IMPORTANT: remove the DEBUG trap
+trap - DEBUG
+
+# PS0 runs right before the command executes.
+# It prints the timestamp, then immediately clears it from the line.
+PS0='${__prompt_timer_start:=$(__prompt_now_ms)}'$'\r\033[K'
+
 PROMPT_COMMAND='__prompt_precmd'
 
 PS1='\n[\[\e[33m\]\@ \[\e[31m\]\u\[\e[37m\]@\[\e[32m\]\h \[\e[36m\]${__prompt_timer_show} \[\e[37m\]${__prompt_status_show} \[\e[34m\]jobs:\j hist:\! \[\e[35m\]\W\[\e[m\]]\n\[\e[0;32m\]\$\[\e[m\] '
-
 #===========================
 # Commands to run on New Shell
 #===========================
